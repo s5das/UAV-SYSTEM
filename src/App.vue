@@ -1,30 +1,110 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="main-page-head">
+    <el-menu
+      :default-active="activeIndex"
+      class="el-menu-demo"
+      mode="horizontal"
+      :ellipsis="false"
+      @select="handleSelect"
+    >
+      <div class="des-left">
+        <img src="./assets/uav.svg" class="img" />
+        <div>UAV CONTROL SYSTEM</div>
+      </div>
+      <div class="flex-grow" />
+      <el-menu-item index="1">Home</el-menu-item>
+      <el-menu-item index="2">Features</el-menu-item>
+      <el-menu-item index="3">About us</el-menu-item>
+      <el-sub-menu index="4">
+        <template #title>Application</template>
+        <el-menu-item index="4-1">uav status</el-menu-item>
+        <el-menu-item index="4-2">uav control</el-menu-item>
+      </el-sub-menu>
+    </el-menu>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <ElConfigProvider :locale="zhCn">
+    <router-view></router-view>
+  </ElConfigProvider>
+  <div class="des">Xidian Licensed | Copyright © 2023-PRESENT</div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script setup>
+import { ElConfigProvider } from 'element-plus'
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+let activeIndex = ref('1')
+provide('activeIndex', activeIndex)
+const handleSelect = (key) => {
+  switch (key) {
+    case '1':
+      activeIndex.value = '1'
+      router.push({
+        path: '/'
+      })
+      break
+    case '2':
+      activeIndex.value = '2'
+      router.push({
+        path: '/features'
+      })
+      break
+    case '3':
+      activeIndex.value = '3'
+      router.push({
+        path: '/aboutus'
+      })
+      break
+    case '4-1':
+      activeIndex.value = '4-1'
+      router.push({
+        path: '/status'
+      })
+      break
+    case '4-2':
+      activeIndex.value = '4-2'
+      router.push({
+        path: '/control'
+      })
+      break
+  }
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+</script>
+
+<style lang="less" scoped>
+.main-page-head {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100vw;
+  height: 8vh;
+  background-color: #fff;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.des-left {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50vw;
+  height: 7vh;
+
+  .img {
+    width: auto;
+    height: 70%;
+  }
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.des {
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+  width: 95vw;
 }
 </style>

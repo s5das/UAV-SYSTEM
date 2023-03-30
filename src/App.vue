@@ -39,31 +39,31 @@ const handleSelect = (key) => {
   switch (key) {
     case '1':
       activeIndex.value = '1'
-      router.push({
+      router.replace({
         path: '/'
       })
       break
     case '2':
       activeIndex.value = '2'
-      router.push({
+      router.replace({
         path: '/features'
       })
       break
     case '3':
       activeIndex.value = '3'
-      router.push({
+      router.replace({
         path: '/aboutus'
       })
       break
     case '4-1':
       activeIndex.value = '4-1'
-      router.push({
+      router.replace({
         path: '/status'
       })
       break
     case '4-2':
       activeIndex.value = '4-2'
-      router.push({
+      router.replace({
         path: '/control'
       })
       break

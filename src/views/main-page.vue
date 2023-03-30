@@ -55,13 +55,13 @@ const goto = (key) => {
   switch (key) {
     case 0:
       activeIndex.value = '4-1'
-      router.push({
+      router.replace({
         path: '/status'
       })
       break
     case 1:
       activeIndex.value = '3'
-      router.push({
+      router.replace({
         path: '/aboutus'
       })
       break

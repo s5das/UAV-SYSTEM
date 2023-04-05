@@ -1,4 +1,7 @@
 <template>
+  <div class="main">
+
+  
   <div class="main-page-head">
     <el-menu
       :default-active="activeIndex"
@@ -26,6 +29,7 @@
     <router-view></router-view>
   </ElConfigProvider>
   <div class="des">Xidian Licensed | Copyright © 2023-PRESENT</div>
+  </div>
 </template>
 
 <script setup>
@@ -72,6 +76,7 @@ const handleSelect = (key) => {
 </script>
 
 <style lang="less" scoped>
+
 .main-page-head {
   position: fixed;
   top: 0;
@@ -104,7 +109,6 @@ const handleSelect = (key) => {
 .des {
   display: flex;
   justify-content: center;
-  margin-top: 10vh;
   width: 95vw;
 }
 </style>

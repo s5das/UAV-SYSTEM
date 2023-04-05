@@ -12,10 +12,6 @@
           <button class="btn2" @click="goto(1)">了解更多</button>
         </div>
       </div>
-      <div class="right">
-        <img src="../assets/a1.jpg" class="img1" />
-        <img src="../assets/a2.jpg" class="img2" />
-      </div>
     </div>
   </div>
 </template>
@@ -70,6 +66,10 @@ const goto = (key) => {
 </script>
 
 <style scoped lang="less">
+.main {
+  background: url('../assets/a1.jpg') no-repeat center/100%;
+}
+
 .main-page-content {
   display: flex;
   padding: 0 15vw;

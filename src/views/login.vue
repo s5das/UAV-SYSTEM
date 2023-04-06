@@ -47,72 +47,58 @@
 </template>
 
 <script setup>
-import sIdentify from "./component/sIdentify.vue";
-import { useRouter } from "vue-router"
+import sIdentify from './component/sIdentify.vue'
+import { useRouter } from 'vue-router'
 const router = useRouter()
 
 // 生成验证码
 let codes = '1234567890'
 const gencode = () => {
-    let code=""
-    for(let i = 0;i<4;i++){
-        let index = Math.floor(Math.random()*codes.length)
-        code += codes.slice(index,index+1)
-    }
-    return code
+  let code = ''
+  for (let i = 0; i < 4; i++) {
+    let index = Math.floor(Math.random() * codes.length)
+    code += codes.slice(index, index + 1)
+  }
+  return code
 }
 // 验证码
-let codeofverify  = ref(gencode())
-const changecode = ()=>{
-    codeofverify.value = gencode()
+let codeofverify = ref(gencode())
+const changecode = () => {
+  codeofverify.value = gencode()
 }
-
 
 const form = ref()
 let formEl = reactive({
-  username: "",
-  password: "",
-  verify: "",
-});
-
+  username: '',
+  password: '',
+  verify: ''
+})
 
 const checkCode = (rule, value, callback) => {
-    if(value!==codeofverify.value){
-      callback(new Error("请输入正确验证码"))
-    }else{
-      callback()
-    }
+  if (value !== codeofverify.value) {
+    callback(new Error('请输入正确验证码'))
+  } else {
+    callback()
+  }
 }
 
 const rules = reactive({
-  username: [
-    { required: true, message: '请输入用户名', trigger: 'blur' },
-  ],
-  password: [
-    { required: true, message: '请输入密码', trigger: 'blur' },
-  ],
+  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
   verify: [
     { required: true, message: '请输入验证码', trigger: 'blur' },
     { validator: checkCode, trigger: 'blur' }
-  ],
+  ]
 })
 
-
-
-
 const onSubmit = async (form) => {
-    await form.validate(
-      (valid)=>{
-          if(valid){
-
-            router.replace({
-                path:'/status'
-            })
-            
-          }
-      }
-   )
-
+  await form.validate((valid) => {
+    if (valid) {
+      router.replace({
+        path: '/status'
+      })
+    }
+  })
 }
 </script>
 
@@ -121,23 +107,20 @@ const onSubmit = async (form) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
   height: 100vh;
-  background-color: #bbb;
-
   .box {
-    .title {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 450px;
     height: 300px;
-    background-color: #fff;
+    box-shadow: 2px 2px 2px 2px #bbb;
     flex-direction: column;
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+    }
   }
 }
 </style>

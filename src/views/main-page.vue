@@ -52,7 +52,7 @@ const goto = (key) => {
     case 0:
       activeIndex.value = '4-1'
       router.replace({
-        path: '/status'
+        path: '/login'
       })
       break
     case 1:

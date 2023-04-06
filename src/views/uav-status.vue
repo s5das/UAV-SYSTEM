@@ -9,59 +9,38 @@
       >
         <el-sub-menu index="1">
           <template #title>
-            <el-icon><location /></el-icon>
-            <span>在线无人机数:2</span>
-          </template>
-          <el-menu-item index="1-1">无人机1</el-menu-item>
-          <el-menu-item index="1-2">无人机2</el-menu-item>
-        </el-sub-menu>
-        <el-sub-menu index="2">
-          <template #title>
-            <el-icon><IconMenu /></el-icon>
-            <span>离线无人机数:1</span>
-          </template>
-          <el-menu-item index="2-1">无人机3</el-menu-item>
-          <el-menu-item index="2-2">无人机4</el-menu-item>
-        </el-sub-menu>
-        <el-sub-menu index="3">
-          <template #title>
             <el-icon><Setting /></el-icon>
-            <span>组网状态</span>
+            <span>无人机状态</span>
           </template>
-          <el-sub-menu index="3-1">
-            <template #title>已组网</template>
-            <el-menu-item index="3-1-1">无人机2</el-menu-item>
-            <el-menu-item index="3-1-2">无人机4</el-menu-item>
+          <el-sub-menu index="1-1">
+            <template #title>在线数:2</template>
+            <el-menu-item index="1-1-1">无人机2</el-menu-item>
+            <el-menu-item index="1-1-2">无人机4</el-menu-item>
           </el-sub-menu>
-          <el-sub-menu index="3-2">
-            <template #title>未组网</template>
-            <el-menu-item index="3-2-1">无人机1</el-menu-item>
-            <el-menu-item index="3-2-2">无人机3</el-menu-item>
-          </el-sub-menu>
+          <el-menu-item index="1-2">离线数:2</el-menu-item>
+          <el-menu-item index="1-3">组网状态</el-menu-item>
         </el-sub-menu>
+        <el-menu-item index="2">地图</el-menu-item>
+        <el-menu-item index="3">控制台</el-menu-item>
       </el-menu>
     </div>
     <div class="right">
-      <div class="pic" ref="pic"></div>
       <div class="uav-list">
         <div class="uav-item">
-          <img src="../assets/充电.svg" alt="" class="ico" />
           <div class="des">电量:{{ uav[0].energy }}%</div>
         </div>
 
         <div class="uav-item">
-          <img src="../assets/CPU.svg" alt="" class="ico" />
           <div class="des">CUP使用率:{{ uav[0].cpu }}%</div>
         </div>
         <div class="uav-item">
-          <img src="../assets/时钟.svg" alt="" class="ico" />
           <div class="des">剩余续航时间:{{ uav[0].time }}h</div>
         </div>
         <div class="uav-item">
-          <img src="../assets/距离.svg" alt="" class="ico" />
           <div class="des">距离控制器距离:{{ uav[0].distance }}m</div>
         </div>
       </div>
+      <div class="pic" ref="pic"></div>
     </div>
   </div>
 </template>
@@ -81,7 +60,7 @@ onMounted(() => {
   var option
   option = {
     title: {
-      text: 'CPU codition',
+      text: 'CPU condition',
       left: 'center'
     },
     grid: {
@@ -269,6 +248,9 @@ const handle = (index) => {
 }
 
 .head {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-around;
   margin-top: 10vh;
@@ -290,22 +272,25 @@ const handle = (index) => {
 .uav-list {
   display: flex;
   justify-content: space-around;
-  padding: 15vh 0 0 5vh;
+  padding: 10vh 0 0 5vh;
   flex-wrap: wrap;
 
   .uav-item {
     display: flex;
     overflow: hidden;
+    margin-top: 3vh;
     margin-right: 3vw;
     width: 30vw;
-    border-radius: 30px 30px 0 0;
+    color: #fff;
+    background-color: #02cdc9;
+    border-radius: 30px;
 
     .des {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 18vw;
-      height: 28vh;
+      width: 30vw;
+      height: 10vh;
       font-weight: 600;
     }
   }

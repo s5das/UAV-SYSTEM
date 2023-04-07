@@ -1,34 +1,32 @@
 <template>
   <div class="main">
-
-  
-  <div class="main-page-head">
-    <el-menu
-      :default-active="activeIndex"
-      class="el-menu-demo"
-      mode="horizontal"
-      :ellipsis="false"
-      @select="handleSelect"
-    >
-      <div class="des-left">
-        <img src="./assets/uav.svg" class="img" />
-        <div>UAV CONTROL SYSTEM</div>
-      </div>
-      <div class="flex-grow" />
-      <el-menu-item index="1">Home</el-menu-item>
-      <el-menu-item index="2">Features</el-menu-item>
-      <el-menu-item index="3">About us</el-menu-item>
-      <el-sub-menu index="4">
-        <template #title>Application</template>
-        <el-menu-item index="4-1">uav status</el-menu-item>
-        <el-menu-item index="4-2">uav control</el-menu-item>
-      </el-sub-menu>
-    </el-menu>
-  </div>
-  <ElConfigProvider :locale="zhCn">
-    <router-view></router-view>
-  </ElConfigProvider>
-  <div class="des">Xidian Licensed | Copyright © 2023-PRESENT</div>
+    <div class="main-page-head">
+      <el-menu
+        :default-active="activeIndex"
+        class="el-menu-demo"
+        mode="horizontal"
+        :ellipsis="false"
+        @select="handleSelect"
+      >
+        <div class="des-left">
+          <img src="./assets/uav.svg" class="img" />
+          <div>UAV CONTROL SYSTEM</div>
+        </div>
+        <div class="flex-grow" />
+        <el-menu-item index="1">主页</el-menu-item>
+        <el-menu-item index="2">介绍</el-menu-item>
+        <el-menu-item index="3">关于我们</el-menu-item>
+        <el-sub-menu index="4">
+          <template #title>应用</template>
+          <el-menu-item index="4-1">无人机状态</el-menu-item>
+          <el-menu-item index="4-2">无人机控制</el-menu-item>
+        </el-sub-menu>
+      </el-menu>
+    </div>
+    <ElConfigProvider :locale="zhCn">
+      <router-view></router-view>
+    </ElConfigProvider>
+    <div class="des">Xidian Licensed | Copyright © 2023-PRESENT</div>
   </div>
 </template>
 
@@ -62,7 +60,7 @@ const handleSelect = (key) => {
     case '4-1':
       activeIndex.value = '4-1'
       router.replace({
-        path: '/status'
+        path: 'uav/status'
       })
       break
     case '4-2':
@@ -76,7 +74,6 @@ const handleSelect = (key) => {
 </script>
 
 <style lang="less" scoped>
-
 .main-page-head {
   position: fixed;
   top: 0;
@@ -110,5 +107,6 @@ const handleSelect = (key) => {
   display: flex;
   justify-content: center;
   width: 95vw;
+  margin: 0 auto;
 }
 </style>

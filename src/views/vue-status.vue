@@ -1,58 +1,25 @@
 <template>
-  <div class="main">
-    <div class="head">
-      <el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-      >
-        <el-sub-menu index="1">
-          <template #title>
-            <el-icon><Setting /></el-icon>
-            <span>无人机状态</span>
-          </template>
-          <el-sub-menu index="1-1">
-            <template #title>在线数:2</template>
-            <el-menu-item index="1-1-1">无人机2</el-menu-item>
-            <el-menu-item index="1-1-2">无人机4</el-menu-item>
-          </el-sub-menu>
-          <el-menu-item index="1-2">离线数:2</el-menu-item>
-          <el-menu-item index="1-3">组网状态</el-menu-item>
-        </el-sub-menu>
-        <el-menu-item index="2">地图</el-menu-item>
-        <el-menu-item index="3">控制台</el-menu-item>
-      </el-menu>
+  <div class="uav-list">
+    <div class="uav-item">
+      <div class="des">电量:{{ uav[0].energy }}%</div>
     </div>
-    <div class="right">
-      <div class="uav-list">
-        <div class="uav-item">
-          <div class="des">电量:{{ uav[0].energy }}%</div>
-        </div>
 
-        <div class="uav-item">
-          <div class="des">CUP使用率:{{ uav[0].cpu }}%</div>
-        </div>
-        <div class="uav-item">
-          <div class="des">剩余续航时间:{{ uav[0].time }}h</div>
-        </div>
-        <div class="uav-item">
-          <div class="des">距离控制器距离:{{ uav[0].distance }}m</div>
-        </div>
-      </div>
-      <div class="pic" ref="pic"></div>
+    <div class="uav-item">
+      <div class="des">CUP使用率:{{ uav[0].cpu }}%</div>
+    </div>
+    <div class="uav-item">
+      <div class="des">剩余续航时间:{{ uav[0].time }}h</div>
+    </div>
+    <div class="uav-item">
+      <div class="des">距离控制器距离:{{ uav[0].distance }}m</div>
     </div>
   </div>
+  <div class="pic" ref="pic"></div>
 </template>
 
-<script setup>
-import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting
-} from '@element-plus/icons-vue'
+<script  setup>
 import * as echarts from 'echarts'
+
 const pic = ref()
 onMounted(() => {
   var myChart = echarts.init(pic.value)
@@ -224,49 +191,13 @@ let uav = reactive([
     status: 0
   }
 ])
-
-let show = reactive([false, false, false])
-
-//定义点击事件处理函数
-const handle = (index) => {
-  if (uav[index].status) {
-    for (let i = 0; i < show.length; i++) {
-      if (i != index) {
-        show[i] = false
-      }
-    }
-    show[index] = !show[index]
-  }
-}
 </script>
 
 <style lang="less" scoped>
-.main {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 10vh;
-}
-
-.head {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10vh;
-  width: 10vw;
-  font-size: 3vh;
-  font-weight: 600;
-}
-
-.right {
-  width: 80vw;
-}
-
 .pic {
   margin-top: 15vh;
   width: 100%;
-  height: 65vh;
+  height: 70vh;
 }
 
 .uav-list {

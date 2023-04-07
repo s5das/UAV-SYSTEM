@@ -12,10 +12,6 @@ const router = createRouter({
       component: () => import('../views/login.vue')
     },
     {
-      path: '/status',
-      component: () => import('../views/uav-status.vue')
-    },
-    {
       path: '/features',
       component: () => import('../views/uav-features.vue')
     },
@@ -24,8 +20,22 @@ const router = createRouter({
       component: () => import('../views/uav-aboutus.vue')
     },
     {
-      path: '/control',
-      component: () => import('../views/uav-control.vue')
+      path: '/uav',
+      component: () => import('../views/uav.vue'),
+      children: [
+        {
+          path: 'status',
+          component: () => import('../views/vue-status.vue')
+        },
+        {
+          path: 'map',
+          component: () => import('../views/uav-map.vue')
+        },
+        {
+          path: 'control',
+          component: () => import('../views/uav-control.vue')
+        }
+      ]
     }
   ]
 })

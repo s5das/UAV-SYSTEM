@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import sIdentify from './component/sIdentify.vue'
+import sIdentify from '../components/sIdentify.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
@@ -95,7 +95,7 @@ const onSubmit = async (form) => {
   await form.validate((valid) => {
     if (valid) {
       router.replace({
-        path: '/status'
+        path: 'uav/status'
       })
     }
   })
@@ -107,13 +107,17 @@ const onSubmit = async (form) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 92vh;
+  background: url('../assets/a2.jpg') no-repeat center/100%;
+  
   .box {
     display: flex;
+    border-radius: 20px;
+    background-color: #fff;
     justify-content: space-around;
     align-items: center;
-    width: 450px;
-    height: 300px;
+    width: 480px;
+    height: 330px;
     box-shadow: 2px 2px 2px 2px #bbb;
     flex-direction: column;
 

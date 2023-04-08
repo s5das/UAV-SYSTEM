@@ -321,11 +321,11 @@ onMounted(() => {
         label: { show: false },
         labelLine: { show: false },
         data: [
-          { value: 1, name: '暴雨'},
+          { value: 1, name: '暴雨' },
           { value: 4, name: '泥石流' },
           { value: 2, name: '地震' },
           { value: 2, name: '龙卷风' },
-          { value: 1, name: '暴雪'}
+          { value: 1, name: '暴雪' }
         ]
       }
     ]
@@ -343,7 +343,11 @@ onMounted(() => {
   var myChart = echarts.init(pic5.value)
 
   var data = [70, 34, 60]
-  var titlename = ['系留式无人机方案', '固定翼无人机', '空天融合网络安全应急通信系统']
+  var titlename = [
+    '系留式无人机',
+    '固定翼无人机',
+    '空天融合'
+  ]
   var valdata = [702, 350, 610]
   var myColor = ['#1089E7', '#F57474', '#56D0E3']
   option = {
@@ -1045,8 +1049,7 @@ li {
 .mainbox {
   display: flex;
   padding: 10vh 0;
-  min-width: 1024px;
-  max-width: 1920px;
+  width: 85vw;
   background: url('../../images/bg.jpg');
 
   .column {
@@ -1064,7 +1067,7 @@ li {
   position: relative;
   padding: 0 0.1875rem 0.5rem;
   margin-bottom: 0.1875rem;
-  height: 50vh;
+  height: 40vh;
   background: rgb(255 255 255 / 4%) url('../images/line\(1\).png');
   border: 1px solid rgb(25 186 139 / 17%);
 
@@ -1135,8 +1138,8 @@ li {
   }
 
   .chart {
-    margin-bottom: 15vh;
-    height: 50vh;
+    margin-bottom: 10vh;
+    height: 32vh;
   }
 }
 
@@ -1215,7 +1218,7 @@ li {
 
 .map {
   position: relative;
-  height: 75vh;
+  height: 50vh;
 
   .chart {
     position: absolute;
@@ -1223,7 +1226,7 @@ li {
     left: 0;
     z-index: 5;
     width: 100%;
-    height: 75vh;
+    height: 50vh;
   }
 
   .map1,
@@ -1234,7 +1237,7 @@ li {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 6.475rem;
-    height: 50vh;
+    height: 45vh;
     background: url('../images/map.png') no-repeat;
     background-size: 100% 100%;
     opacity: 0.3;
@@ -1243,7 +1246,7 @@ li {
   .map2 {
     z-index: 2;
     width: 8.0375rem;
-    height: 60vh;
+    height: 45vh;
     opacity: 0.6;
     background-image: url('../images/lbx.png');
     animation: rotate 15s linear infinite;
@@ -1251,7 +1254,7 @@ li {
 
   .map3 {
     width: 7.075rem;
-    height: 60vh;
+    height: 45vh;
     background-image: url('../images/jt.png');
     animation: rotate1 10s linear infinite;
   }

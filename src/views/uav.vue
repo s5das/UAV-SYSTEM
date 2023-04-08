@@ -101,7 +101,7 @@ const handleSelect = (key) => {
 }
 
 .right {
-  padding-left: 10vw;
+  padding-left: 5vw;
   width: 80vw;
 }
 </style>

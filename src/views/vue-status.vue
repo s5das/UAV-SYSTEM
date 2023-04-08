@@ -1,23 +1,29 @@
 <template>
   <div class="uav-list">
-    <div class="uav-item">
-      <div class="des">电量:{{ uav[0].energy }}%</div>
+    <div class="profile">
+      <div class="name">无人机1</div>
+      <img src="../assets/uav2.svg" alt=""  class="ico"/>
     </div>
+    <div class="details">
+      <div class="uav-item">
+        <div class="des">电量:{{ uav[0].energy }}%</div>
+      </div>
 
-    <div class="uav-item">
-      <div class="des">CUP使用率:{{ uav[0].cpu }}%</div>
-    </div>
-    <div class="uav-item">
-      <div class="des">剩余续航时间:{{ uav[0].time }}h</div>
-    </div>
-    <div class="uav-item">
-      <div class="des">距离控制器距离:{{ uav[0].distance }}m</div>
+      <div class="uav-item">
+        <div class="des">CUP使用率:{{ uav[0].cpu }}%</div>
+      </div>
+      <div class="uav-item">
+        <div class="des">剩余续航时间:{{ uav[0].time }}h</div>
+      </div>
+      <div class="uav-item">
+        <div class="des">距离控制器距离:{{ uav[0].distance }}m</div>
+      </div>
     </div>
   </div>
   <div class="pic" ref="pic"></div>
 </template>
 
-<script  setup>
+<script setup>
 import * as echarts from 'echarts'
 
 const pic = ref()
@@ -206,23 +212,47 @@ let uav = reactive([
   padding: 10vh 0 0 5vh;
   flex-wrap: wrap;
 
-  .uav-item {
+  .profile {
     display: flex;
-    overflow: hidden;
-    margin-top: 3vh;
-    margin-right: 3vw;
-    width: 30vw;
-    color: #fff;
-    background-color: #02cdc9;
-    border-radius: 30px;
-
-    .des {
+    justify-content: center;
+    width: 15vw;
+    flex-direction: column;
+    align-items: center;
+    .name {
+      font-weight: 600;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 30vw;
-      height: 10vh;
-      font-weight: 600;
+    }
+
+    .ico {
+      width: 15vw;
+      height: 15vh;
+    }
+  }
+
+  .details {
+    width: 60vw;
+    display: flex;
+    flex-wrap: wrap;
+    .uav-item {
+      display: flex;
+      overflow: hidden;
+      margin-top: 3vh;
+      margin-right: 3vw;
+      width: 25vw;
+      color: #fff;
+      background-color: #02cdc9;
+      border-radius: 30px;
+
+      .des {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30vw;
+        height: 10vh;
+        font-weight: 600;
+      }
     }
   }
 }

@@ -5,19 +5,11 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('../views/main-page.vue')
+      redirect: '/login'
     },
     {
       path: '/login',
       component: () => import('../views/login.vue')
-    },
-    {
-      path: '/features',
-      component: () => import('../views/uav-features.vue')
-    },
-    {
-      path: '/aboutus',
-      component: () => import('../views/uav-aboutus.vue')
     },
     {
       path: '/uav',

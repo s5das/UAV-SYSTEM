@@ -1,49 +1,48 @@
 <template>
   <div class="main">
-    <div class="head">
-      <el-menu
-        default-active="1-1-1"
-        class="el-menu-vertical-demo"
-        @select="handleSelect"
-      >
-        <el-sub-menu index="1">
+    <el-menu
+      default-active="1-1-1"
+      class="el-menu-vertical-demo left"
+      @select="handleSelect"
+    >
+      <el-sub-menu index="1">
+        <template #title>
+          <el-icon><Setting /></el-icon>
+          <span>无人机状态</span>
+        </template>
+        <el-sub-menu index="1-1">
           <template #title>
             <el-icon><Setting /></el-icon>
-            <span>无人机状态</span>
+            <span>在线数:2</span>
           </template>
-          <el-sub-menu index="1-1">
-            <template #title>
-              <el-icon><Setting /></el-icon>
-              <span>在线数:2</span>
-            </template>
-            <el-menu-item index="1-1-1">
-              <el-icon><Setting /></el-icon>
-              <span>无人机2</span>
-            </el-menu-item>
-            <el-menu-item index="1-1-2">
-              <el-icon><Setting /></el-icon>
-              <span>无人机4</span>
-            </el-menu-item>
-          </el-sub-menu>
-          <el-menu-item index="1-2">
+          <el-menu-item index="1-1-1">
             <el-icon><Setting /></el-icon>
-            <span>离线数:2</span>
+            <span>无人机2</span>
           </el-menu-item>
-          <el-menu-item index="1-3">
-            <el-icon><Document /></el-icon>
-            <span>组网状态</span>
+          <el-menu-item index="1-1-2">
+            <el-icon><Setting /></el-icon>
+            <span>无人机4</span>
           </el-menu-item>
         </el-sub-menu>
-        <el-menu-item index="2">
-          <el-icon><Location /></el-icon>
-          <span>地图</span>
+        <el-menu-item index="1-2">
+          <el-icon><Setting /></el-icon>
+          <span>离线数:2</span>
         </el-menu-item>
-        <el-menu-item index="3">
-          <el-icon><IconMenu /></el-icon>
-          <span>控制台</span>
+        <el-menu-item index="1-3">
+          <el-icon><Document /></el-icon>
+          <span>组网状态</span>
         </el-menu-item>
-      </el-menu>
-    </div>
+      </el-sub-menu>
+      <el-menu-item index="2">
+        <el-icon><Location /></el-icon>
+        <span>地图</span>
+      </el-menu-item>
+      <el-menu-item index="3">
+        <el-icon><IconMenu /></el-icon>
+        <span>控制台</span>
+      </el-menu-item>
+    </el-menu>
+
     <div class="right">
       <router-view></router-view>
     </div>
@@ -57,7 +56,7 @@ import {
   Location,
   Setting
 } from '@element-plus/icons-vue'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const handleSelect = (key) => {
@@ -88,20 +87,15 @@ const handleSelect = (key) => {
   margin-bottom: 10vh;
 }
 
-.head {
+.left {
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10vh;
-  width: 10vw;
-  font-size: 3vh;
-  font-weight: 600;
+  width: 10%;
 }
 
 .right {
-  padding-left: 5vw;
-  width: 80vw;
+  margin-left: 10vw;
+  width: 90%;
 }
 </style>

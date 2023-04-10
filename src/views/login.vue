@@ -109,15 +109,15 @@ const onSubmit = async (form) => {
   align-items: center;
   height: 92vh;
   background: url('../assets/a2.jpg') no-repeat center/100%;
-  
+
   .box {
     display: flex;
-    border-radius: 20px;
-    background-color: #fff;
     justify-content: space-around;
     align-items: center;
     width: 480px;
     height: 330px;
+    background-color: #fff;
+    border-radius: 20px;
     box-shadow: 2px 2px 2px 2px #bbb;
     flex-direction: column;
 

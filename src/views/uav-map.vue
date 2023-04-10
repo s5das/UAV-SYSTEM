@@ -343,11 +343,7 @@ onMounted(() => {
   var myChart = echarts.init(pic5.value)
 
   var data = [70, 34, 60]
-  var titlename = [
-    '系留式无人机',
-    '固定翼无人机',
-    '空天融合'
-  ]
+  var titlename = ['系留式无人机', '固定翼无人机', '空天融合']
   var valdata = [702, 350, 610]
   var myColor = ['#1089E7', '#F57474', '#56D0E3']
   option = {
@@ -1048,8 +1044,7 @@ li {
 
 .mainbox {
   display: flex;
-  padding: 10vh 0;
-  width: 85vw;
+  padding: 2vh 0;
   background: url('../../images/bg.jpg');
 
   .column {
@@ -1181,7 +1176,6 @@ li {
         padding: 0.05rem 0;
         height: 1rem;
         font-size: 0.875rem;
-        font-family: electronicFont;
         text-align: center;
         color: #ffeb7b;
         flex: 1;

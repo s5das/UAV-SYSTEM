@@ -2,7 +2,7 @@
   <div class="uav-list">
     <div class="profile">
       <div class="name">无人机1</div>
-      <img src="../assets/uav2.svg" alt=""  class="ico"/>
+      <img src="../assets/uav2.svg" alt="" class="ico" />
     </div>
     <div class="details">
       <div class="uav-item">
@@ -209,15 +209,15 @@ let uav = reactive([
 .uav-list {
   display: flex;
   justify-content: space-around;
-  padding: 10vh 0 0 5vh;
   flex-wrap: wrap;
 
   .profile {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 15vw;
     flex-direction: column;
-    align-items: center;
+
     .name {
       font-weight: 600;
       display: flex;
@@ -232,9 +232,10 @@ let uav = reactive([
   }
 
   .details {
-    width: 60vw;
     display: flex;
+    width: 60vw;
     flex-wrap: wrap;
+
     .uav-item {
       display: flex;
       overflow: hidden;

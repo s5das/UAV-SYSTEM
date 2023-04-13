@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="pic" :ref="pic_list[index]"></div>
+    <div class="pic" :ref="'pic'+(index+1)"></div>
   </div>
 </template>
 
@@ -33,7 +33,6 @@ const pic2 = ref()
 const pic3 = ref()
 const pic4 = ref()
 
-const pic_list = ['pic1','pic2','pic3','pic4']
 onMounted(() => {
 
   var myChart = echarts.init(pic1.value[0])

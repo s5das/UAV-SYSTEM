@@ -163,11 +163,12 @@ div {
 }
 
 .page {
-  margin: 0;
   padding-top: 10vh 10vw;
-  box-sizing: border-box;
+  margin: 0;
+
   /* 谨删 */
   width: 100%;
+  box-sizing: border-box;
 }
 
 #pageUl {
@@ -185,6 +186,7 @@ div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .title {
     font-weight: 600;
     font-size: 4vh;

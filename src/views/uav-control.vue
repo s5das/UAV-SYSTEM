@@ -1,11 +1,13 @@
 <template>
-  <div class="title">uav-control</div>
+   
+    <BMap ak="1R2AtLDL8SZPVGtiilZwsYXYW6sHGZnr" height="100vh"></BMap>
+
 </template>
 
-<script setup></script>
+<script  setup>
+import { BMap } from 'vue3-baidu-map-gl'
+
+</script>
 
 <style lang="less" scoped>
-.title{
-  font-weight: 600;
-}
 </style>

@@ -852,7 +852,7 @@ onMounted(() => {
   }
 
   var XAData = [
-    [{ name: '西安' }, { name: '北京', value: 100 }],
+    [{ name: '西安' }, { name: '北京', value: 101 }],
     [{ name: '西安' }, { name: '上海', value: 100 }],
     [{ name: '西安' }, { name: '广州', value: 100 }],
     [{ name: '西安' }, { name: '西宁', value: 100 }],
@@ -902,84 +902,39 @@ onMounted(() => {
     ['西宁', XNData],
     ['银川', YCData]
   ].forEach(function (item, i) {
-    series.push(
-      {
-        name: item[0] + ' Top3',
-        type: 'lines',
-        zlevel: 1,
-        effect: {
-          show: true,
-          period: 6,
-          trailLength: 0.7,
-          color: 'red', //arrow箭头的颜色
-          symbolSize: 3
-        },
-        lineStyle: {
-          normal: {
-            color: color[i],
-            width: 0,
-            curveness: 0.2
-          }
-        },
-        data: convertData(item[1])
+    series.push({
+      name: item[0] + ' Top3',
+      type: 'effectScatter',
+      coordinateSystem: 'geo',
+      zlevel: 2,
+      rippleEffect: {
+        brushType: 'stroke'
       },
-      {
-        name: item[0] + ' Top3',
-        type: 'lines',
-        zlevel: 2,
-        symbol: ['none', 'arrow'],
-        symbolSize: 10,
-        effect: {
+      label: {
+        normal: {
           show: true,
-          period: 6,
-          trailLength: 0,
-          symbol: planePath,
-          symbolSize: 15
-        },
-        lineStyle: {
-          normal: {
-            color: color[i],
-            width: 1,
-            opacity: 0.6,
-            curveness: 0.2
-          }
-        },
-        data: convertData(item[1])
+          position: 'right',
+          formatter: '{b}'
+        }
       },
-      {
-        name: item[0] + ' Top3',
-        type: 'effectScatter',
-        coordinateSystem: 'geo',
-        zlevel: 2,
-        rippleEffect: {
-          brushType: 'stroke'
+      symbolSize: function (val) {
+        return val[2] / 8
+      },
+      itemStyle: {
+        normal: {
+          color: color[i]
         },
-        label: {
-          normal: {
-            show: true,
-            position: 'right',
-            formatter: '{b}'
-          }
-        },
-        symbolSize: function (val) {
-          return val[2] / 8
-        },
-        itemStyle: {
-          normal: {
-            color: color[i]
-          },
-          emphasis: {
-            areaColor: '#2B91B7'
-          }
-        },
-        data: item[1].map(function (dataItem) {
-          return {
-            name: dataItem[1].name,
-            value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
-          }
-        })
-      }
-    )
+        emphasis: {
+          areaColor: '#2B91B7'
+        }
+      },
+      data: item[1].map(function (dataItem) {
+        return {
+          name: dataItem[1].name,
+          value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+        }
+      })
+    })
   })
   var option = {
     tooltip: {
@@ -1045,10 +1000,11 @@ li {
 .mainbox {
   display: flex;
   padding: 2vh 0;
+  height: 96vh;
   background: url('../../images/bg.jpg');
 
   .column {
-    flex: 3;
+    flex: 2.5;
 
     &:nth-child(2) {
       overflow: hidden;
@@ -1062,7 +1018,7 @@ li {
   position: relative;
   padding: 0 0.1875rem 0.5rem;
   margin-bottom: 0.1875rem;
-  height: 40vh;
+  height: 30vh;
   background: rgb(255 255 255 / 4%) url('../images/line\(1\).png');
   border: 1px solid rgb(25 186 139 / 17%);
 
@@ -1134,7 +1090,7 @@ li {
 
   .chart {
     margin-bottom: 10vh;
-    height: 32vh;
+    height: 25vh;
   }
 }
 
@@ -1212,7 +1168,7 @@ li {
 
 .map {
   position: relative;
-  height: 50vh;
+  height: 70vh;
 
   .chart {
     position: absolute;
@@ -1220,7 +1176,7 @@ li {
     left: 0;
     z-index: 5;
     width: 100%;
-    height: 50vh;
+    height: 70vh;
   }
 
   .map1,

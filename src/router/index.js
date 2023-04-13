@@ -16,8 +16,16 @@ const router = createRouter({
       component: () => import('../views/uav.vue'),
       children: [
         {
-          path: 'status',
-          component: () => import('../views/vue-status.vue')
+          path: 'main',
+          component: () => import('../views/uav-main.vue')
+        },
+        {
+          path: 'status1',
+          component: () => import('../views/uav-status.vue')
+        },
+        {
+          path: 'status2',
+          component: () => import('../views/uav-status2.vue')
         },
         {
           path: 'map',

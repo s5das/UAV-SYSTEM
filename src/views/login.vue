@@ -95,7 +95,7 @@ const onSubmit = async (form) => {
   await form.validate((valid) => {
     if (valid) {
       router.replace({
-        path: 'uav/status'
+        path: 'uav/status1'
       })
     }
   })

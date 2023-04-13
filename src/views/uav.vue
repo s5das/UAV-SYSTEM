@@ -3,41 +3,34 @@
     <el-menu
       default-active="1-1-1"
       class="el-menu-vertical-demo left"
+      active-text-color="#F9F871"
       @select="handleSelect"
+      background-color="#2b91b7"
+      text-color="#fff"
     >
-      <el-sub-menu index="1">
+      <el-menu-item index="1">
+        <el-icon><Document /></el-icon>
+        <span>主页</span>
+      </el-menu-item>
+      <el-sub-menu index="2" >
         <template #title>
-          <el-icon><Setting /></el-icon>
-          <span>无人机状态</span>
+          <el-icon ><Setting /></el-icon>
+          <span >无人机状态</span>
         </template>
-        <el-sub-menu index="1-1">
-          <template #title>
-            <el-icon><Setting /></el-icon>
-            <span>在线数:2</span>
-          </template>
-          <el-menu-item index="1-1-1">
-            <el-icon><Setting /></el-icon>
-            <span>无人机2</span>
-          </el-menu-item>
-          <el-menu-item index="1-1-2">
-            <el-icon><Setting /></el-icon>
-            <span>无人机4</span>
-          </el-menu-item>
-        </el-sub-menu>
-        <el-menu-item index="1-2">
+        <el-menu-item index="2-1" >
           <el-icon><Setting /></el-icon>
-          <span>离线数:2</span>
+          <span>详细</span>
         </el-menu-item>
-        <el-menu-item index="1-3">
-          <el-icon><Document /></el-icon>
-          <span>组网状态</span>
+        <el-menu-item index="2-2" >
+          <el-icon><Setting /></el-icon>
+          <span>简略</span>
         </el-menu-item>
       </el-sub-menu>
-      <el-menu-item index="2">
+      <el-menu-item index="3">
         <el-icon><Location /></el-icon>
         <span>地图</span>
       </el-menu-item>
-      <el-menu-item index="3">
+      <el-menu-item index="4">
         <el-icon><IconMenu /></el-icon>
         <span>控制台</span>
       </el-menu-item>
@@ -61,17 +54,27 @@ const router = useRouter()
 
 const handleSelect = (key) => {
   switch (key) {
-    case '1-1-1':
+    case '1':
       router.replace({
-        path: 'status'
+        path: 'main'
       })
       break
-    case '2':
+    case '2-1':
+      router.replace({
+        path: 'status1'
+      })
+      break
+    case '2-2':
+      router.replace({
+        path: 'status2'
+      })
+      break
+    case '3':
       router.replace({
         path: 'map'
       })
       break
-    case '3':
+    case '4':
       router.replace({
         path: 'control'
       })
@@ -84,7 +87,6 @@ const handleSelect = (key) => {
 .main {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 10vh;
 }
 
 .left {
@@ -92,6 +94,13 @@ const handleSelect = (key) => {
   top: 0;
   left: 0;
   width: 10%;
+  height: 100%;
+  background-image: linear-gradient(#2b91b7, #0a1347);
+
+  .el-menu-item {
+    color: #fff;
+  }
+
 }
 
 .right {

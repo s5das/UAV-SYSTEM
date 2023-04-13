@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="pic" :ref="'pic'+(index+1)"></div>
+    <div class="pic" ref="pic1"></div>
   </div>
 </template>
 
@@ -29,16 +29,13 @@
 import * as echarts from 'echarts'
 
 const pic1 = ref()
-const pic2 = ref()
-const pic3 = ref()
-const pic4 = ref()
 
 onMounted(() => {
 
   var myChart = echarts.init(pic1.value[0])
-  var myChart1 = echarts.init(pic2.value[0])
-  var myChart2 = echarts.init(pic3.value[0])
-  var myChart3 = echarts.init(pic4.value[0])
+  var myChart1 = echarts.init(pic1.value[1])
+  var myChart2 = echarts.init(pic1.value[2])
+  var myChart3 = echarts.init(pic1.value[3])
 
   var option;
 

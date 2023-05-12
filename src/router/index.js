@@ -32,6 +32,14 @@ const router = createRouter({
           component: () => import('../views/uav-map.vue')
         },
         {
+          path: 'task',
+          component: () => import('../views/task-add.vue')
+        },
+        {
+          path: 'information',
+          component: () => import('../views/information.vue')
+        },
+        {
           path: 'control',
           component: () => import('../views/uav-control.vue')
         }

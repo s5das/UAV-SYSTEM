@@ -9,30 +9,34 @@
       text-color="#fff"
     >
       <el-menu-item index="1">
-        <el-icon><Document /></el-icon>
+        <el-icon><Setting /></el-icon>
         <span>主页</span>
       </el-menu-item>
-      <el-sub-menu index="2" >
+      <el-sub-menu index="2">
         <template #title>
-          <el-icon ><Setting /></el-icon>
-          <span >无人机状态</span>
+          <el-icon><Setting /></el-icon>
+          <span>无人机状态</span>
         </template>
-        <el-menu-item index="2-1" >
+        <el-menu-item index="2-1">
           <el-icon><Setting /></el-icon>
           <span>详细</span>
         </el-menu-item>
-        <el-menu-item index="2-2" >
+        <el-menu-item index="2-2">
           <el-icon><Setting /></el-icon>
           <span>简略</span>
         </el-menu-item>
       </el-sub-menu>
       <el-menu-item index="3">
         <el-icon><Location /></el-icon>
-        <span>地图</span>
+        <span>创建任务</span>
       </el-menu-item>
       <el-menu-item index="4">
         <el-icon><IconMenu /></el-icon>
         <span>控制台</span>
+      </el-menu-item>
+      <el-menu-item index="5">
+        <el-icon><IconMenu /></el-icon>
+        <span>无人机信息</span>
       </el-menu-item>
     </el-menu>
 
@@ -56,7 +60,7 @@ const handleSelect = (key) => {
   switch (key) {
     case '1':
       router.replace({
-        path: 'main'
+        path: 'map'
       })
       break
     case '2-1':
@@ -71,12 +75,17 @@ const handleSelect = (key) => {
       break
     case '3':
       router.replace({
-        path: 'map'
+        path: 'task'
       })
       break
     case '4':
       router.replace({
         path: 'control'
+      })
+      break
+    case '5':
+      router.replace({
+        path: 'information'
       })
       break
   }
@@ -100,7 +109,6 @@ const handleSelect = (key) => {
   .el-menu-item {
     color: #fff;
   }
-
 }
 
 .right {

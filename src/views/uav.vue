@@ -3,40 +3,30 @@
     <el-menu
       default-active="1-1-1"
       class="el-menu-vertical-demo left"
-      active-text-color="#F9F871"
       @select="handleSelect"
-      background-color="#2b91b7"
+      background-color="#271b52"
       text-color="#fff"
+      style="height: 100vh"
     >
       <el-menu-item index="1">
         <el-icon><Setting /></el-icon>
         <span>主页</span>
       </el-menu-item>
-      <el-sub-menu index="2">
-        <template #title>
-          <el-icon><Setting /></el-icon>
-          <span>无人机状态</span>
-        </template>
-        <el-menu-item index="2-1">
-          <el-icon><Setting /></el-icon>
-          <span>详细</span>
-        </el-menu-item>
-        <el-menu-item index="2-2">
-          <el-icon><Setting /></el-icon>
-          <span>简略</span>
-        </el-menu-item>
-      </el-sub-menu>
+      <el-menu-item index="2">
+        <el-icon><Setting /></el-icon>
+        <span>无人机状态</span>
+      </el-menu-item>
       <el-menu-item index="3">
         <el-icon><Location /></el-icon>
         <span>创建任务</span>
       </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon><IconMenu /></el-icon>
-        <span>控制台</span>
-      </el-menu-item>
       <el-menu-item index="5">
         <el-icon><IconMenu /></el-icon>
         <span>无人机信息</span>
+      </el-menu-item>
+      <el-menu-item index="4">
+        <el-icon><IconMenu /></el-icon>
+        <span>退出登录</span>
       </el-menu-item>
     </el-menu>
 
@@ -63,12 +53,7 @@ const handleSelect = (key) => {
         path: 'map'
       })
       break
-    case '2-1':
-      router.replace({
-        path: 'status1'
-      })
-      break
-    case '2-2':
+    case '2':
       router.replace({
         path: 'status2'
       })
@@ -80,7 +65,7 @@ const handleSelect = (key) => {
       break
     case '4':
       router.replace({
-        path: 'control'
+        path: '/login'
       })
       break
     case '5':
@@ -104,7 +89,6 @@ const handleSelect = (key) => {
   left: 0;
   width: 10%;
   height: 100%;
-  background-image: linear-gradient(#2b91b7, #0a1347);
 
   .el-menu-item {
     color: #fff;

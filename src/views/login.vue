@@ -1,16 +1,18 @@
 <template>
   <div class="main">
+    <img
+      src="../assets/p1.svg"
+      style="position: absolute; top: 46vh; right: 46.5vw; height: 8vh"
+      alt=""
+    />
     <div class="common-layout">
       <el-container>
-        <el-header height="10vh" class="header">
-          <div class="head-title">无人机web控制台</div>
-        </el-header>
+        <el-header height="10vh" class="header"> 
+          <div class="head-title">无人机Web控制台</div>
+          </el-header>
         <el-container>
           <el-aside width="65vw" class="aside">
-            <div class="des-left">
-              <img src="../assets/uav.svg" class="img" />
-              <div>大数据无人机控制平台</div>
-            </div>
+            <div class="des-left"></div>
           </el-aside>
           <el-main>
             <div class="box">
@@ -52,7 +54,7 @@
                   </el-row>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="primary" @click="onSubmit(form)"
+                  <el-button type="primary" @click="onSubmit(form)" color="#826db8"
                     >登录</el-button
                   >
                 </el-form-item>
@@ -60,7 +62,14 @@
             </div>
           </el-main>
         </el-container>
-        <el-footer height="80vh" class="footer">简介</el-footer>
+        <el-footer height="25vh" class="footer">
+          <div>
+            无人机数据共享平台是我校为师生搭建的一体化学习平台，集教育资源共建共享、在线学习于一体，师生可在线
+          </div>
+          <div>
+            进行课程直播观看、学习资源获取、翻转课堂互动、知识分享交流等多样化学习活动
+          </div>
+        </el-footer>
       </el-container>
     </div>
   </div>
@@ -115,7 +124,7 @@ const onSubmit = async (form) => {
   await form.validate((valid) => {
     if (valid) {
       router.replace({
-        path: 'uav/status1'
+        path: '/uav/map'
       })
     }
   })
@@ -124,15 +133,30 @@ const onSubmit = async (form) => {
 
 <style lang="less" scoped>
 .main {
+  height: 100vh;
+  background: url('../assets/bg1.svg');
+
   .header {
     display: flex;
     align-items: center;
-    background-color: #2bb4d0;
 
     .head-title {
-      font-size: 3vh;
-      font-weight: 600;
+      padding: 1vh 0.8vw;
+      font-size: 2vh;
       color: #fff;
+      background: linear-gradient(
+          0deg,
+          rgb(255 255 255 / 0.2%),
+          rgb(255 255 255 / 0.2%)
+        ),
+        linear-gradient(
+          90deg,
+          rgb(229 156 255 / 24%) 0.01%,
+          rgb(186 156 255 / 24%) 50.01%,
+          rgb(156 178 255 / 24%) 100%
+        );
+      border-radius: 15px;
+      font-weight: 600;
     }
   }
 
@@ -164,19 +188,38 @@ const onSubmit = async (form) => {
     align-items: center;
     width: 480px;
     height: 330px;
-    background-color: #fff;
     border-radius: 20px;
-    box-shadow: 2px 2px 2px 2px #bbb;
+    border: dashed  #fff 1px;
     flex-direction: column;
 
     .title {
-      font-size: 18px;
+      padding: 0.5vh 0.8vw;
+      font-size: 3vh;
+      color: #fff;
+      background: linear-gradient(
+          0deg,
+          rgb(255 255 255 / 0.2%),
+          rgb(255 255 255 / 0.2%)
+        ),
+        linear-gradient(
+          90deg,
+          rgb(229 156 255 / 24%) 0.01%,
+          rgb(186 156 255 / 24%) 50.01%,
+          rgb(156 178 255 / 24%) 100%
+        );
+      border-radius: 15px;
       font-weight: 600;
     }
   }
 }
 
 .footer {
-  background-color: #2bb4d0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh auto;
+  width: 55vw;
+  color: white;
+  flex-direction: column;
 }
 </style>

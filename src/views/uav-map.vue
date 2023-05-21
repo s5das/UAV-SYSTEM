@@ -7,7 +7,7 @@
           <li
             v-for="(item, index) in ulList"
             :key="item.id"
-            :class="!index && play ? 'toUp' : ''"
+            :class="!index && play ? 'toup' : ''"
           >
             {{ item.msg }}
           </li>
@@ -15,20 +15,7 @@
       </div>
     </div>
     <div class="column">
-      <div class="no">
-        <div class="no-hd">
-          <ul>
-            <li>125811</li>
-            <li>104563</li>
-          </ul>
-        </div>
-        <div class="no-bd">
-          <ul>
-            <li>受灾人数</li>
-            <li>需要无人机支持数</li>
-          </ul>
-        </div>
-      </div>
+      <div class="no"></div>
       <div class="map">
         <div class="chart" ref="pic1"></div>
         <div class="map1"></div>
@@ -43,7 +30,7 @@
           <li
             v-for="(item, index) in ulList"
             :key="item.id"
-            :class="!index && play ? 'toUp' : ''"
+            :class="!index && play ? 'toup' : ''"
           >
             {{ item.msg }}
           </li>
@@ -58,18 +45,27 @@ import 'echarts/map/js/china.js'
 import getGuangXiMap from '../http/api/getmap'
 // 1. 实例化对象
 import * as echarts from 'echarts'
+import map_data from '../assets/map.js'
 
 let ulList = reactive([
-  { msg: '这是第一条信息' },
-  { msg: '这是第二条信息' },
-  { msg: '这是第三条信息' },
-  { msg: '这是第四条信息' },
-  { msg: '这是第五条信息' },
-  { msg: '这是第六条信息' },
-  { msg: '这是第七条信息' },
-  { msg: '这是第八条信息' },
-  { msg: '这是第九条信息' },
-  { msg: '这是第十条信息' }
+  { msg: '这是第一条信息', id: '0' },
+  { msg: '这是第二条信息', id: '1' },
+  { msg: '这是第三条信息', id: '2' },
+  { msg: '这是第四条信息', id: '3' },
+  { msg: '这是第五条信息', id: '4' },
+  { msg: '这是第六条信息', id: '5' },
+  { msg: '这是第七条信息', id: '6' },
+  { msg: '这是第八条信息', id: '7' },
+  { msg: '这是第九条信息', id: '8' },
+  { msg: '这是第十一条信息', id: '9' },
+  { msg: '这是第十二条信息', id: '10' },
+  { msg: '这是第十三条信息', id: '11' },
+  { msg: '这是第十四条信息', id: '12' },
+  { msg: '这是第十五条信息', id: '13' },
+  { msg: '这是第十六条信息', id: '14' },
+  { msg: '这是第十七条信息', id: '15' },
+  { msg: '这是第十八条信息', id: '16' },
+  { msg: '这是第十九条信息', id: '17' }
 ])
 let play = ref(false)
 
@@ -89,71 +85,69 @@ onMounted(() => {
   // 显示 loading 动画
   myChart.showLoading()
   // 再得到数据的基础上，进行地图绘制
-  getGuangXiMap().then((res) => {
-    // 得到结果后，关闭动画
-    myChart.hideLoading()
-    // 注册地图(数据放在axios返回对象的data中哦)
-    echarts.registerMap('GX', res.data)
-    var option = {
-      visualMap: {
-        min: 1111,
-        max: 333332,
-        realtime: false,
-        calculable: true,
-        inRange: {
-          color: ['lightskyblue', 'blue']
-        }
-      },
+  // 得到结果后，关闭动画
+  myChart.hideLoading()
+  // 注册地图(数据放在axios返回对象的data中哦)
+  echarts.registerMap('GX', map_data)
+  var option = {
+    visualMap: {
+      min: 1111,
+      max: 333332,
+      realtime: false,
+      calculable: true,
+      inRange: {
+        color: ['lightskyblue', 'blue']
+      }
+    },
 
-      roam: true,
-      //   放大我们的地图
-      title: {
-        text: '陕西无人机设备统计图(/万元)',
-        left: 'center',
-        textStyle: {
-          //文字颜色
-          color: '#fff',
-          //字体风格,'normal','italic','oblique'
-          fontStyle: 'normal',
-          //字体粗细 'normal','bold','bolder','lighter',100 | 200 | 300 | 400...
-          fontWeight: 'bold',
-          //字体系列
-          fontFamily: 'sans-serif',
-          //字体大小
-          fontSize: 18
-        }
-      },
-      series: [
-        {
-          name: '广西地图',
-          type: 'map',
-          map: 'GX', // 这个是上面注册时的名字哦，registerMap（'这个名字保持一致'）
-          label: {
-            show: true,
-            color: '#fff'
-          },
-          itemStyle: {
-            emphasis: {
-              areaColor: '#2B91B7'
-            }
-          },
-          data: [
-            { name: '榆林市', value: 11111 },
-            { name: '延安市', value: 22221 },
-            { name: '铜川市', value: 33333 },
-            { name: '渭南市', value: 22231 },
-            { name: '咸阳市', value: 44441 },
-            { name: '宝鸡市', value: 44444 },
-            { name: '商洛市', value: 162475 },
-            { name: '汉中市', value: 65454 },
-            { name: '安康市', value: 77771 },
-            { name: '西安市', value: 88884 }
-          ]
-        }
-      ]
-    }
-    myChart.setOption(option)
-  })
+    roam: true,
+    //   放大我们的地图
+    title: {
+      text: '陕西无人机设备统计图(/万元)',
+      left: 'center',
+      textStyle: {
+        //文字颜色
+        color: '#fff',
+        //字体风格,'normal','italic','oblique'
+        fontStyle: 'normal',
+        //字体粗细 'normal','bold','bolder','lighter',100 | 200 | 300 | 400...
+        fontWeight: 'bold',
+        //字体系列
+        fontFamily: 'sans-serif',
+        //字体大小
+        fontSize: 18
+      }
+    },
+    series: [
+      {
+        name: '广西地图',
+        type: 'map',
+        map: 'GX', // 这个是上面注册时的名字哦，registerMap（'这个名字保持一致'）
+        label: {
+          show: true,
+          color: '#fff'
+        },
+        itemStyle: {
+          emphasis: {
+            areaColor: '#2B91B7'
+          }
+        },
+        data: [
+          { name: '榆林市', value: 11111 },
+          { name: '延安市', value: 22221 },
+          { name: '铜川市', value: 33333 },
+          { name: '渭南市', value: 22231 },
+          { name: '咸阳市', value: 44441 },
+          { name: '宝鸡市', value: 44444 },
+          { name: '商洛市', value: 162475 },
+          { name: '汉中市', value: 65454 },
+          { name: '安康市', value: 77771 },
+          { name: '西安市', value: 88884 }
+        ]
+      }
+    ]
+  }
+  myChart.setOption(option)
 })
 </script>
 
@@ -168,7 +162,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   margin-top: 5vh;
-  height: 40vh;
+  height: 80vh;
   font-size: 1vh;
   color: white;
   flex-direction: column;
@@ -176,9 +170,22 @@ onMounted(() => {
   .title {
     display: flex;
     justify-content: center;
-    width: 20vw;
+    padding: 1vh 1vw;
+    margin-bottom: 2vh;
+    width: 11vw;
     font-size: 2vh;
-    border: 2px solid #fff;
+    background: linear-gradient(
+        0deg,
+        rgb(255 255 255 / 0.2%),
+        rgb(255 255 255 / 0.2%)
+      ),
+      linear-gradient(
+        90deg,
+        rgb(229 156 255 / 24%) 0.01%,
+        rgb(186 156 255 / 24%) 50.01%,
+        rgb(156 178 255 / 24%) 100%
+      );
+    border-radius: 15px;
     font-weight: 600;
   }
 
@@ -186,7 +193,7 @@ onMounted(() => {
     overflow: hidden;
     padding: 0;
     margin: 0;
-    height: 40vh;
+    height: 80vh;
     text-align: center;
     list-style: none;
   }
@@ -207,7 +214,7 @@ onMounted(() => {
   display: flex;
   padding: 2vh 0;
   height: 96vh;
-  background: url('../../images/bg.jpg');
+  background: #010108 url('../assets/bg2.png');
 
   .column {
     flex: 2.5;
@@ -225,7 +232,6 @@ onMounted(() => {
   padding: 0 0.1875rem 0.5rem;
   margin-bottom: 0.1875rem;
   height: 30vh;
-  background: rgb(255 255 255 / 4%) url('../images/line\(1\).png');
   border: 1px solid rgb(25 186 139 / 17%);
 
   &::before {

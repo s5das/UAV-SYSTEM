@@ -203,12 +203,19 @@ onMounted(() => {
 const step = ref(1)
 </script>
 
+<style>
+:root {
+  --el-color-primary: #826db8;
+}
+</style>
+
 <style lang="less" scoped>
 .main {
   display: flex;
   justify-content: center;
   height: 100vh;
   text-align: center;
+  background: #010108;
 
   .title {
     margin-top: 10vh;
@@ -222,19 +229,20 @@ const step = ref(1)
   justify-content: space-between;
   align-items: center;
   padding: 5vh 5vw;
+  margin: 0 auto;
   margin-top: 20vh;
   width: 60vw;
   height: 50vh;
+  background: rgb(132 111 185 / 20%);
   border-radius: 30px;
-  box-shadow: 1px 1px 1px 1px #bbb;
   flex-direction: column;
 }
 
 .info {
   display: flex;
-  width: 20vw;
   justify-content: space-around;
   align-items: center;
+  width: 20vw;
   height: 10vh;
 
   .left {
@@ -269,9 +277,10 @@ const step = ref(1)
     flex: 1;
 
     .dis {
+      padding: 10px;
       height: 5vh;
-      border: 2px solid rgb(107 241 107);
-      padding: 5px;
+      border: 2px solid #826db8;
+      border-radius: 5px;
     }
   }
 }

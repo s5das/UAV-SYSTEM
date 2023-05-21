@@ -11,4 +11,6 @@ import { ElConfigProvider } from 'element-plus'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less">
+
+</style>
